@@ -149,3 +149,10 @@ function! common#move(source, destination)
   call system("mv ".a:source." ".a:destination)
   return a:destination
 endfunction
+
+" Synopsis:
+"   Copies a file from one location to another
+function! common#move(source, destination)
+  call system("cp ".a:source." ".a:destination)
+  return a:destination
+endfunction

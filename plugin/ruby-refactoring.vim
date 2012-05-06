@@ -1,8 +1,6 @@
 "
 " Author: Sandeep Ravichandran
 "
-" Acknowledgements:
-"
 " Load all refactoring recipes
 exec 'runtime ' . expand('<sfile>:p:h') . '/refactorings/general/*.vim'
 
@@ -13,11 +11,9 @@ command! -range RenameInstanceVariable    call RenameInstanceVariable()
 command! -range RenameLocalVariable    call RenameLocalVariable()
 command! -range IndentFile    call IndentProject()
 command! -range MoveCurrentFile    call MoveCurrentFile()
+command! -range CopyCurrentFile    call CopyCurrentFile()
 
 " Mappings:
-"
-" Default mappings are <leader>r followed by an acronym of the pattern's name
-" E.g. Extract Method is mapped to <leader>rem
 
 if !exists('g:ruby_refactoring_map_keys')
   let g:ruby_refactoring_map_keys = 1
@@ -28,4 +24,5 @@ if g:ruby_refactoring_map_keys
   vnoremap <leader>rv :RenameLocalVariable<cr>
   noremap <leader>ic :IndentFile<cr>
   noremap <leader>mf :MoveCurrentFile<cr>
+  noremap <leader>cf :CopyCurrentFile<cr>
 endif
