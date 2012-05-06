@@ -146,5 +146,6 @@ endfunction
 " Synopsis:
 "   Moves a file from one location to another
 function! common#move(source, destination)
-  return system("mv ".a:source." ".a:destination)
+  call system("mv ".a:source." ".a:destination)
+  return a:destination
 endfunction
