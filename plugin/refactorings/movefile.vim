@@ -4,7 +4,7 @@ function! MoveCurrentFile()
   try
     let currentpath = common#get_file_path()
 
-    let destination = common#get_input("Destination: ", "Enter destination path" )
+    let destination = common#get_file_input("Destination: ", "Enter destination path" )
   catch
     echo v:exception
     return

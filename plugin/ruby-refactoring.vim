@@ -12,6 +12,7 @@ command! -range RenameLocalVariable    call RenameLocalVariable()
 command! -range IndentFile    call IndentProject()
 command! -range MoveCurrentFile    call MoveCurrentFile()
 command! -range CopyCurrentFile    call CopyCurrentFile()
+command! -range ExtractMethod    call ExtractMethod()
 
 " Mappings:
 
@@ -25,4 +26,5 @@ if g:ruby_refactoring_map_keys
   noremap <leader>ic :IndentFile<cr>
   noremap <leader>mf :MoveCurrentFile<cr>
   noremap <leader>cf :CopyCurrentFile<cr>
+  vnoremap <leader>em :ExtractMethod<cr>
 endif

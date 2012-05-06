@@ -12,7 +12,7 @@ endfunction
 
 " Synopsis:
 "   Return a file input given by the user and prepopulates with current path
-function! common#get_input(message, error_message)
+function! common#get_file_input(message, error_message)
   let name = input(a:message, common#get_file_path(), "file")
   if name == ''
     throw a:error_message
