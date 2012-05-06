@@ -12,6 +12,7 @@ exec 'runtime ' . expand('<sfile>:p:h') . '/refactorings/general/*.vim'
 command! -range RenameInstanceVariable    call RenameInstanceVariable()
 command! -range RenameLocalVariable    call RenameLocalVariable()
 command! -range IndentFile    call IndentProject()
+command! -range MoveCurrentFile    call MoveCurrentFile()
 
 " Mappings:
 "
@@ -26,4 +27,5 @@ if g:ruby_refactoring_map_keys
   vnoremap <leader>riv :RenameInstanceVariable<cr>
   vnoremap <leader>rv :RenameLocalVariable<cr>
   noremap <leader>ic :IndentFile<cr>
+  noremap <leader>mf :MoveCurrentFile<cr>
 endif

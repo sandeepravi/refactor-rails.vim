@@ -11,6 +11,16 @@ function! common#get_input(message, error_message)
 endfunction
 
 " Synopsis:
+"   Return a file input given by the user and prepopulates with current path
+function! common#get_input(message, error_message)
+  let name = input(a:message, common#get_file_path(), "file")
+  if name == ''
+    throw a:error_message
+  endif
+  return name
+endfunction
+
+" Synopsis:
 "   Param: Optional parameter of '1' dictates cut, rather than copy
 "   Returns the text that was selected when the function was invoked
 "   without clobbering any registers
@@ -91,6 +101,12 @@ function! common#get_path()
 endfunction
 
 " Synopsis:
+"   Return filename with path
+function! common#get_file_path() 
+  return expand('%:p')
+endfunction
+
+" Synopsis:
 "   Return the current method name
 function! common#get_method_name() 
   let BEGIN_PATTERN = '\C'.'^\s*'.'def\>'.'\s\+'.'\('.'[^(]\+'.'\)'.'\%('.'\s*'.'('.'\=\)'
@@ -125,4 +141,10 @@ function! common#get_controller_views()
   let rootpath = join(split(common#get_path(),"controllers"), "views")
   let path = rootpath.name
   return path."*"
+endfunction
+
+" Synopsis:
+"   Moves a file from one location to another
+function! common#move(source, destination)
+  return system("mv ".a:source." ".a:destination)
 endfunction
