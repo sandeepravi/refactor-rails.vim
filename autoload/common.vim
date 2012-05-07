@@ -107,6 +107,18 @@ function! common#get_file_path()
 endfunction
 
 " Synopsis:
+"   Return controller path for the parameter
+function! common#get_controller_path()
+  return "app/controllers/"
+endfunction
+
+" Synopsis:
+"   Return helper path for the parameter
+function! common#get_helper_path()
+  return "app/helpers/"
+endfunction
+
+" Synopsis:
 "   Return the current method name
 function! common#get_method_name() 
   let BEGIN_PATTERN = '\C'.'^\s*'.'def\>'.'\s\+'.'\('.'[^(]\+'.'\)'.'\%('.'\s*'.'('.'\=\)'
@@ -152,7 +164,51 @@ endfunction
 
 " Synopsis:
 "   Copies a file from one location to another
-function! common#move(source, destination)
+function! common#copy(source, destination)
   call system("cp ".a:source." ".a:destination)
   return a:destination
+endfunction
+
+" Synopsis:
+"   Convert word to mixedcase
+function! common#mixedcase(word)
+  return substitute(s:camelcase(a:word),'^.','\u&','')
+endfunction
+
+" Synopsis:
+"   Convert word to camelcase
+function! common#camelcase(word)
+  let word = substitute(a:word, '-', '_', 'g')
+  if word !~# '_' && word =~# '\l'
+    return substitute(word,'^.','\l&','')
+  else
+    return substitute(word,'\C\(_\)\=\(.\)','\=submatch(1)==""?tolower(submatch(2)) : toupper(submatch(2))','g')
+  endif
+endfunction
+
+" Synopsis:
+"   Convert word to snakecase
+function! common#snakecase(word)
+  let word = substitute(a:word,'::','/','g')
+  let word = substitute(word,'\(\u\+\)\(\u\l\)','\1_\2','g')
+  let word = substitute(word,'\(\l\|\d\)\(\u\)','\1_\2','g')
+  let word = substitute(word,'-','_','g')
+  let word = tolower(word)
+  return word
+endfunction
+
+" Synopsis:
+"   Convert snakecase to controller_name
+function! common#controller(word)
+  let word = common#snakecase(a:word)
+  let word = word."_controller.rb"
+  return word
+endfunction
+
+" Synopsis:
+"   Convert snakecase to helper_name
+function! common#helper(word)
+  let word = common#snakecase(a:word)
+  let word = word."_helper.rb"
+  return word
 endfunction
