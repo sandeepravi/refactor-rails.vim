@@ -15,12 +15,12 @@ applications.
 Existing Features
 =================
 
-  vnoremap <leader>riv :RenameInstanceVariable<cr>
-  vnoremap <leader>rv  :RenameLocalVariable<cr>
-  noremap  <leader>ic  :IndentFile<cr>
-  noremap  <leader>mf  :MoveCurrentFile<cr>
-  noremap  <leader>cf  :CopyCurrentFile<cr>
-  vnoremap <leader>em  :ExtractMethod<cr> 
+    vnoremap <leader>riv :RenameInstanceVariable<cr>
+    vnoremap <leader>rv  :RenameLocalVariable<cr>
+    noremap  <leader>ic  :IndentFile<cr>
+    noremap  <leader>mf  :MoveCurrentFile<cr>
+    noremap  <leader>cf  :CopyCurrentFile<cr>
+    vnoremap <leader>em  :ExtractMethod<cr> 
 
 Any of you having a doubt here, _vnoremap_ corresponds to mapping in the
 visual mode and the rest are in normal mode. You can map these to any
