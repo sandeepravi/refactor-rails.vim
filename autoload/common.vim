@@ -125,6 +125,12 @@ function! common#get_view_path()
 endfunction
 
 " Synopsis:
+"   Return view path for the parameter
+function! common#get_routes_path()
+  return common#get_root_path()."config/routes.rb"
+endfunction
+
+" Synopsis:
 "   Return the current method name
 function! common#get_method_name() 
   let BEGIN_PATTERN = '\C'.'^\s*'.'def\>'.'\s\+'.'\('.'[^(]\+'.'\)'.'\%('.'\s*'.'('.'\=\)'

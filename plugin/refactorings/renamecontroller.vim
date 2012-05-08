@@ -36,11 +36,11 @@ function! RenameController()
   execute arg.' | update'
   "
   " Rename controller filename
+  "
   let path = common#get_controller_path()
   let newcontrollerpath = path.common#controller(newcontroller)
   let oldcontrollerpath = path.common#controller(split(file_name, "_controller.rb")[0])
   call common#move(oldcontrollerpath, newcontrollerpath)
-  exec 'e '.newcontrollerpath
   "
   " Rename helper filename
   "
@@ -58,5 +58,12 @@ function! RenameController()
   "
   " Rename resource in routes
   "
+  let routespath = common#get_routes_path()
+  let arg = 'args '.routespath
+  execute arg
+  let arg = 'argdo %s/'.split(file_name, '_controller.rb')[0].'/'.newcontroller.'/ig'
+  execute arg.' | update'
+
+  exec 'e '.newcontrollerpath
 
 endfunction
