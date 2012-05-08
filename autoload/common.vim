@@ -109,13 +109,19 @@ endfunction
 " Synopsis:
 "   Return controller path for the parameter
 function! common#get_controller_path()
-  return "app/controllers/"
+  return common#get_root_path()."app/controllers/"
 endfunction
 
 " Synopsis:
 "   Return helper path for the parameter
 function! common#get_helper_path()
-  return "app/helpers/"
+  return common#get_root_path()."app/helpers/"
+endfunction
+
+" Synopsis:
+"   Return view path for the parameter
+function! common#get_view_path()
+  return common#get_root_path()."app/views/"
 endfunction
 
 " Synopsis:
@@ -134,7 +140,13 @@ function! common#get_method_name()
     return NONE
   endif
 
-  return m[1]
+  echo m[1]
+endfunction
+
+" Synopsis:
+"   Return the current class name
+function! common#get_class_name(word) 
+  return common#mixedcase(a:word)
 endfunction
 
 " Synopsis:
@@ -144,6 +156,12 @@ function! common#get_method_view()
   let rootpath = common#get_path()
   let path = rootpath."/".name
   return path
+endfunction
+
+" Synopsis:
+"   Returns the root path for the project
+function! common#get_root_path() 
+  return split(common#get_path(), "app")[0]
 endfunction
 
 " Synopsis:
@@ -163,6 +181,13 @@ function! common#move(source, destination)
 endfunction
 
 " Synopsis:
+"   Moves a folder from one location to another
+function! common#movefolder(source, destination)
+  call system("mv -r ".a:source." ".a:destination)
+  return a:destination
+endfunction
+
+" Synopsis:
 "   Copies a file from one location to another
 function! common#copy(source, destination)
   call system("cp ".a:source." ".a:destination)
@@ -172,7 +197,7 @@ endfunction
 " Synopsis:
 "   Convert word to mixedcase
 function! common#mixedcase(word)
-  return substitute(s:camelcase(a:word),'^.','\u&','')
+  return substitute(common#camelcase(a:word),'^.','\u&','')
 endfunction
 
 " Synopsis:
@@ -210,5 +235,12 @@ endfunction
 function! common#helper(word)
   let word = common#snakecase(a:word)
   let word = word."_helper.rb"
+  return word
+endfunction
+
+" Synopsis:
+"   Convert snakecase to views folder
+function! common#view(word)
+  let word = common#snakecase(a:word)
   return word
 endfunction
