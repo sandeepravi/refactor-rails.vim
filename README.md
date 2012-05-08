@@ -20,6 +20,7 @@ Existing Features
     noremap  <leader>ic  :IndentFile<cr>
     noremap  <leader>mf  :MoveCurrentFile<cr>
     noremap  <leader>cf  :CopyCurrentFile<cr>
+    noremap  <leader>rc  :RenameController<cr>
     vnoremap <leader>em  :ExtractMethod<cr> 
 
 Any of you having a doubt here, _vnoremap_ corresponds to mapping in the
