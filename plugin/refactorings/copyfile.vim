@@ -10,8 +10,8 @@ function! CopyCurrentFile()
     return
   endtry
 
-  " Move file to destination path
-  let newpath = common#move(currentpath, destination)
+  " Copy file to destination path
+  let newpath = common#copy(currentpath, destination)
 
   " Open file in new location
   execute "e ".newpath
