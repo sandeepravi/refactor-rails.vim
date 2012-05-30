@@ -14,6 +14,7 @@ command! -range MoveCurrentFile           call MoveCurrentFile()
 command! -range CopyCurrentFile           call CopyCurrentFile()
 command! -range ExtractMethod             call ExtractMethod()
 command! -range RenameController          call RenameController()
+command! -range InlineVariable            call InlineVariable()
 
 " Mappings:
 
@@ -29,4 +30,5 @@ if g:ruby_refactoring_map_keys
   noremap  <leader>cf  :CopyCurrentFile<cr>
   vnoremap <leader>rv  :RenameLocalVariable<cr>
   noremap  <leader>rc  :RenameController<cr>
+  noremap  <leader>iv  :InliveVariable<cr>
 endif
