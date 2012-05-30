@@ -21,7 +21,8 @@ Existing Features
     noremap  <leader>mf  :MoveCurrentFile<cr>
     noremap  <leader>cf  :CopyCurrentFile<cr>
     noremap  <leader>rc  :RenameController<cr>
-    vnoremap <leader>em  :ExtractMethod<cr> 
+    vnoremap <leader>em  :ExtractMethod<cr>
+    noremap  <leader>iv  :InlineVariable<cr>
 
 Any of you having a doubt here, _vnoremap_ corresponds to mapping in the
 visual mode and the rest are in normal mode. You can map these to any
