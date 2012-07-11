@@ -48,4 +48,4 @@ a not in issues in case you have suggestions for any features, bugs etc.
 Licencing
 =========
 
-Copyright &copy; 2012 [Sandeep Ravichandran](http://delusionalcode.wordpress.com). Distributed under the same terms as Vim itself. See :help license.
+Copyright &copy; 2012 [Sandeep Ravichandran](http://sandeepravi.github.com). Distributed under the same terms as Vim itself. See :help license.
